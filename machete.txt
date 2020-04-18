@@ -1,6 +1,24 @@
+php artisan --version
+En este caso: Laravel Framework 7.6.2
+--
 Para actualizar Laravel
     composer update
-	
+
+Se crea el proyecto y toda la vaina
+PS E:\laragon\www\mec> git init
+Initialized empty Git repository in E:/laragon/www/mec/.git/
+PS E:\laragon\www\mec> git remote add origin https://github.com/issmaelpp/mec.git
+PS E:\laragon\www\mec> git config --local user.email "ismaelp@outlook.com.ar"
+PS E:\laragon\www\mec> git config --local user.name "Ismael Ponce"
+
+luego...
+Para integrar vue
+-----
+composer require laravel/ui
+php artisan ui vue --auth
+--
+
+
 Para crear las migraciones
 		--------	Con relaciones	--------
 	php artisan make:migration perfiles --create=perfiles
@@ -40,7 +58,7 @@ Para crear las sembradoras
 	php artisan make:seeder PermisosSeeder
 	php artisan make:seeder UsuariosSeeder
 	php artisan make:seeder ProveedoresSeeder
-	
+
 	php artisan make:seeder SubcategoriasSeeder
 	php artisan make:seeder UsuariosYPerfilesSeeder // Es una tabla intermedia (con id)
 	php artisan make:seeder PermisosYPerfilesSeeder // Es una tabla intermedia
@@ -49,7 +67,7 @@ Para crear las sembradoras
 	php artisan make:seeder DetallesDeVentasSeeder
 	php artisan make:seeder ComprasSeeder
 	php artisan make:seeder DetallesDeComprasSeeder
-	
+
 	php artisan make:seeder MenusSeeder				// Todavía no se para que sirve
 	php artisan make:seeder MenusYPerfilesSeeder	// Es una tabla intermedia
 
@@ -123,7 +141,7 @@ Para crear los controladores
 	php artisan make:controller --resource Admin/DetalleDeCompraController
 
 	php artisan make:controller --resource Admin/MenuController
-	php artisan make:controller --resource Admin/MenuYPerfilController		
+	php artisan make:controller --resource Admin/MenuYPerfilController
 
 
 
@@ -183,7 +201,7 @@ Para crear las rutas
 
 
 
-Para cachear rutas y todos los archivos de configuracion incluyendo el .env 
+Para cachear rutas y todos los archivos de configuracion incluyendo el .env
 (solo rutas directas, no funciona con clousure)
 	php artisan optimize
 
@@ -195,10 +213,10 @@ En el archivo de configuracion
 
 
 El cache en laravel
-	Para usar cache en laravel hay que utilizar "redis", o sea un servidor que es como 
+	Para usar cache en laravel hay que utilizar "redis", o sea un servidor que es como
 	una base de datos especialmente diseñado para cache.
 	Ir al archivo .env en la linea 17 y cambiar el valor de "cache_drive" de file a redis
-		
+
 		CACHE_DRIVER=redis
 
 	Para saber si redis esta funcionando hay que revisar el terminal
@@ -247,7 +265,7 @@ Si comienza a joder el error de pantalla roja
 Una vez que se editaron los seeders hay que regenerar el cargador automatico y
 posteriormente hacer el seed
 	composer dump-autoload --optimize //***averiguar para que sirve esto***//
-	php artisan db:seed 
+	php artisan db:seed
 
 
 
@@ -275,13 +293,13 @@ la ejecución del script finaliza. Si el archivo de script actual fue nombrado
 por las opciones de configuración auto_prepend_file o auto_append_file en php.ini,
 entonces la ejecución de ese archivo de script finaliza.
 
-@return [descripción de tipo] Esta etiqueta no debe usarse para constructores 
+@return [descripción de tipo] Esta etiqueta no debe usarse para constructores
 o métodos definidos con un tipo de retorno nulo.
 
 Descripción de @return datatype
 Descripción de @return datatype1 | datatype2
 
-La etiqueta @return se usa para documentar el valor de retorno de funciones 
+La etiqueta @return se usa para documentar el valor de retorno de funciones
 o métodos. @returns es un alias para @return para admitir formatos de etiquetas de
 otros documentadores automáticos
 El tipo de datos debe ser un tipo PHP válido (int, string, bool, etc.), un nombre
@@ -292,7 +310,7 @@ como tipo de datos en la etiqueta @return, phpDocumentor creará automáticament
 enlace a la documentación de esa clase. Además, si una función devuelve múltiples
 valores posibles, separelos con | carácter, y phpDocumento analizará cualquier
 nombre de clase en el valor de retorno. phpDocumento mostrará la descripción
-opcional sin modificar. 
+opcional sin modificar.
 */
 
 
@@ -334,14 +352,14 @@ $table->decimal('amount', 8, 2);
 		escala de dígitos decimales.
 
 $table->double('amount', 8, 2);
-		Tipo de columna equivalente a DOUBLE con una precisión (el total de dígitos) y 
+		Tipo de columna equivalente a DOUBLE con una precisión (el total de dígitos) y
 		escala de dígitos decimales.
 
 $table->enum('level', ['easy', 'hard']);
 		Tipo de columna equivalente a ENUM.
 
 $table->float('amount', 8, 2);
-		Tipo de columna equivalente a FLOAT con una precisión (el total de dígitos) y 
+		Tipo de columna equivalente a FLOAT con una precisión (el total de dígitos) y
 		escala de dígitos decimales.
 
 $table->geometry('positions');
@@ -421,11 +439,11 @@ $table->smallInteger('votes');
 		Tipo de columna equivalente a SMALLINT.
 
 $table->softDeletes();
-		Permite nulos en el tipo de columna equivalente a TIMESTAMP deleted_at para 
+		Permite nulos en el tipo de columna equivalente a TIMESTAMP deleted_at para
 		eliminaciones.
 
 $table->softDeletesTz();
-		Permite nulos en el tipo de columna equivalente a TIMESTAMP deleted_at (con la 
+		Permite nulos en el tipo de columna equivalente a TIMESTAMP deleted_at (con la
 		hora de la zona) para eliminaciones.
 
 $table->string('name', 100);
@@ -450,7 +468,7 @@ $table->timestamps();
 		Permite nulos en las columnas equivalentes TIMESTAMP created_at y updated_at.
 
 $table->timestampsTz();
-		Permite nulos en las columnas equivalentes TIMESTAMP created_at y updated_at 
+		Permite nulos en las columnas equivalentes TIMESTAMP created_at y updated_at
 		(con la hora de la zona).
 
 $table->tinyIncrements('id');
@@ -463,7 +481,7 @@ $table->unsignedBigInteger('votes');
 		Tipo de columna equivalente a UNSIGNED BIGINT.
 
 $table->unsignedDecimal('amount', 8, 2);
-		Tipo de columna equivalente a UNSIGNED DECIMAL con una precisión (total de 
+		Tipo de columna equivalente a UNSIGNED DECIMAL con una precisión (total de
 		dígitos) escala (dígitos decimales).
 
 $table->unsignedInteger('votes');
@@ -490,8 +508,8 @@ $table->year('birth_year');
 
 Modificadores de columna
 
-Además de los tipos de columna listados anteriormente, hay varios "modificadores" de columna 
-que puedes usar al momento de agregar una columna a la tabla de base de datos. Por ejemplo, 
+Además de los tipos de columna listados anteriormente, hay varios "modificadores" de columna
+que puedes usar al momento de agregar una columna a la tabla de base de datos. Por ejemplo,
 para hacer que la columna "acepte valores nulos", puedes usar el método nullable.
 
 Schema::table('users', function (Blueprint $table) {
@@ -535,7 +553,7 @@ los modificadores de índice:
 		Establece las columnas tipo INTEGER como UNSIGNED (MySQL)
 
 ->useCurrent()
-		Establece las columnas tipo TIMESTAMP para usar CURRENT_TIMESTAMP como 
+		Establece las columnas tipo TIMESTAMP para usar CURRENT_TIMESTAMP como
 		valor predeterminado
 
 ->virtualAs($expression)
@@ -545,7 +563,7 @@ los modificadores de índice:
 		Crea una columna de identidad con opciones de secuencia especificadas (PostgreSQL)
 
 ->always()
-		Define la prioridad de los valores de secuencia sobre la entrada para una 
+		Define la prioridad de los valores de secuencia sobre la entrada para una
 		columna de identidad (PostgreSQL)
 
 #
