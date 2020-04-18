@@ -1,0 +1,552 @@
+Para actualizar Laravel
+    composer update
+	
+Para crear las migraciones
+		--------	Con relaciones	--------
+	php artisan make:migration perfiles --create=perfiles
+	php artisan make:migration marcas --create=marcas
+	php artisan make:migration medios_de_pago --create=medios_de_pago
+	php artisan make:migration categorias --create=categorias
+	php artisan make:migration permisos --create=permisos
+	php artisan make:migration usuarios --create=usuarios
+	php artisan make:migration proveedores --create=proveedores
+		--------	Con llaves foráneas	--------
+	php artisan make:migration subcategorias --create=subcategorias
+	php artisan make:migration usuarios_y_perfiles --create=usuarios_y_perfiles
+	php artisan make:migration permisos_y_perfiles --create=permisos_y_perfiles
+	php artisan make:migration productos --create=productos
+	php artisan make:migration ventas --create=ventas
+	php artisan make:migration detalles_de_ventas --create=detalles_de_ventas
+	php artisan make:migration compras --create=compras
+	php artisan make:migration detalles_de_compras --create=detalles_de_compras
+		---------	Agregados	------------
+	php artisan make:migration menus --create=menus
+	php artisan make:migration menus_y_perfiles --create=menus_y_perfiles
+
+Cuando las migraciones estan editadas y listas se ejecuta
+	php artisan migrate
+
+Si hay errores se ejecuta fresh para utilizar el método down() de cada migración
+	php artisan migrate:fresh
+
+
+
+
+Para crear las sembradoras
+	php artisan make:seeder PerfilesSeeder
+	php artisan make:seeder MarcasSeeder
+	php artisan make:seeder MediosDePagoSeeder
+	php artisan make:seeder CategoriasSeeder
+	php artisan make:seeder PermisosSeeder
+	php artisan make:seeder UsuariosSeeder
+	php artisan make:seeder ProveedoresSeeder
+	
+	php artisan make:seeder SubcategoriasSeeder
+	php artisan make:seeder UsuariosYPerfilesSeeder // Es una tabla intermedia (con id)
+	php artisan make:seeder PermisosYPerfilesSeeder // Es una tabla intermedia
+	php artisan make:seeder ProductosSeeder
+	php artisan make:seeder VentasSeeder
+	php artisan make:seeder DetallesDeVentasSeeder
+	php artisan make:seeder ComprasSeeder
+	php artisan make:seeder DetallesDeComprasSeeder
+	
+	php artisan make:seeder MenusSeeder				// Todavía no se para que sirve
+	php artisan make:seeder MenusYPerfilesSeeder	// Es una tabla intermedia
+
+
+
+
+Para crear las fabricas
+			php artisan make:factory PerfilFactory --model=Perfil
+			php artisan make:factory MarcaFactory --model=Marca
+	php artisan make:factory MedioDePagoFactory --model=MedioDePago
+	php artisan make:factory CategoriaFactory --model=Categoria
+	php artisan make:factory PermisoFactory --model=Permiso
+	php artisan make:factory UsuarioFactory --model=Usuario
+	php artisan make:factory ProveedorFactory --model=Proveedor
+
+	php artisan make:factory SubcategoriaFactory --model=Subcategoria
+	php artisan make:factory PermisoFactory --model=UsuarioYPerfil
+	php artisan make:factory PermisoFactory --model=PermisoYPerfil
+	php artisan make:factory ProductoFactory --model=Producto
+	php artisan make:factory VentaFactory --model=Venta
+	php artisan make:factory DetalleDeVentaFactory --model=DetalleDeVenta
+	php artisan make:factory CompraFactory --model=Compra
+	php artisan make:factory DetalleDeCompraFactory --model=DetalleDeCompra
+
+	php artisan make:factory MenuFactory --model=Menu
+	php artisan make:factory MenusYPerfilesFactory --model=MenuYPerfil
+
+
+
+
+Para crear los modelos
+	php artisan make:model Models/Admin/Perfil
+	php artisan make:model Models/Admin/Marca
+	php artisan make:model Models/Admin/MedioDePago
+	php artisan make:model Models/Admin/Categoria
+	php artisan make:model Models/Admin/Permiso
+	php artisan make:model Models/Admin/Usuario
+	php artisan make:model Models/Admin/Proveedor
+
+	php artisan make:model Models/Admin/Subcategoria
+	php artisan make:model Models/Admin/UsuarioYPerfil
+	php artisan make:model Models/Admin/PermisoYPerfil
+	php artisan make:model Models/Admin/Producto
+	php artisan make:model Models/Admin/Venta
+	php artisan make:model Models/Admin/DetalleDeVenta
+	php artisan make:model Models/Admin/Compra
+	php artisan make:model Models/Admin/DetalleDeCompra
+
+	php artisan make:model Models/Admin/Menu
+	php artisan make:model Models/Admin/MenuYPerfil
+
+
+
+
+Para crear los controladores
+	php artisan make:controller --resource Admin/PerfilController
+	php artisan make:controller --resource Admin/MarcaController
+	php artisan make:controller --resource Admin/MedioDePagoController
+	php artisan make:controller --resource Admin/CategoriaController
+	php artisan make:controller --resource Admin/PermisoController
+	php artisan make:controller --resource Admin/UsuarioController
+	php artisan make:controller --resource Admin/ProveedorController
+
+	php artisan make:controller --resource Admin/SubcategoriaController
+	php artisan make:controller --resource Admin/UsuarioYPerfilController 	//este no necesita
+	php artisan make:controller --resource Admin/PermisoYPerfilController 	//este no encesita
+	php artisan make:controller --resource Admin/ProductoController
+	php artisan make:controller --resource Admin/VentaController
+	php artisan make:controller --resource Admin/DetalleDeVentaController
+	php artisan make:controller --resource Admin/CompraController
+	php artisan make:controller --resource Admin/DetalleDeCompraController
+
+	php artisan make:controller --resource Admin/MenuController
+	php artisan make:controller --resource Admin/MenuYPerfilController		
+
+
+
+Para crear las vistas
+	Dentro de la carpeta resources/views creo una carpeta de nombre Admin
+	y una vez alli se crean carpetas con los nombres de las vistas que voy a usar
+
+	perfil
+	marca
+	medioDePago
+	categoria
+	permiso
+	usuario
+	proveedor
+
+	subcategoria
+	usuarioYPerfil		// Esta no porque es una tabla intermedia
+	permisoYPerfil		// Esta no porque es una tabla intermedia
+	producto
+	venta
+	detalleDeVenta
+	compra
+	detalleDeCompra
+
+	menu
+	menuYPerfil			// Esta no porque es una tabla intermedia
+
+	Una vez creadas las carpetas, se crea este archivo dentro de cada carpeta
+	"index.blade.php"
+
+Utilizando el comando view:clear podemos eliminar desde la terminal la vistas en caché:
+	php artisan view:clear // Averiguar como volver a cachear vistas
+
+
+
+
+Para crear las rutas
+	En la carpeta routes hay una archivo llamado "web.php" y es el lugar donde
+	se van a  trazar las rutas.
+
+	Route::get('admin/perfil', 'Admin\PerfilController@index');
+	Route::get('admin/marca', 'Admin\MarcaController@index');
+	Route::get('admin/medioDePago', 'Admin\MedioDePagoController@index');
+	Route::get('admin/categoria', 'Admin\CategoriaController@index');
+	Route::get('admin/permiso', 'Admin\PermisoController@index');
+	Route::get('admin/usuario', 'Admin\UsuarioController@index');
+	Route::get('admin/proveedor', 'Admin\ProveedorController@index');
+	Route::get('admin/subcategoria', 'Admin\SubcategoriaController@index');
+	Route::get('admin/producto', 'Admin\ProductoController@index');
+	Route::get('admin/venta', 'Admin\VentaController@index');
+	Route::get('admin/detalleDeVenta', 'Admin\DetalleDeventaController@index');
+	Route::get('admin/compra', 'Admin\CompraController@index');
+	Route::get('admin/detalleDeCompra', 'Admin\DetalleDecompraController@index');
+	Route::get('admin/menu', 'Admin\MenuController@index');
+
+
+
+
+
+Para cachear rutas y todos los archivos de configuracion incluyendo el .env 
+(solo rutas directas, no funciona con clousure)
+	php artisan optimize
+
+En el archivo de configuracion
+	php artisan config:clear
+
+
+
+
+
+El cache en laravel
+	Para usar cache en laravel hay que utilizar "redis", o sea un servidor que es como 
+	una base de datos especialmente diseñado para cache.
+	Ir al archivo .env en la linea 17 y cambiar el valor de "cache_drive" de file a redis
+		
+		CACHE_DRIVER=redis
+
+	Para saber si redis esta funcionando hay que revisar el terminal
+
+		C:\laragon\www\mercado>redis-cli
+		127.0.0.1:6379> exit
+
+
+
+
+Para crear la validacion	(App/http/Request)
+	php artisan make:request PerfilValidacion
+	php artisan make:request MarcaValidacion
+	php artisan make:request MedioDePagoValidacion
+	php artisan make:request CategoriaValidacion
+	php artisan make:request PermisoValidacion
+	php artisan make:request UsuarioValidacion
+	php artisan make:request ProveedorValidacion
+
+	php artisan make:request SubcategoriaValidacion
+	php artisan make:request UsuarioYPerfilValidacion //Esta no
+	php artisan make:request PermisoYPerfilValidacion //Esta no
+	php artisan make:request ProductoValidacion
+	php artisan make:request VentaValidacion
+	php artisan make:request DetalleDeVentaValidacion
+	php artisan make:request CompraValidacion
+	php artisan make:request DetalleDeCompraValidacion
+
+	php artisan make:request MenuValidacion
+	php artisan make:request MenuYPerfilValidacion //Esta no
+
+
+Para crear una regla	(App/Rules)
+	php artisan make:rule ValidarCampoUrl
+
+
+
+
+Si comienza a joder el error de pantalla roja
+	php artisan route:clear
+
+
+
+
+
+Una vez que se editaron los seeders hay que regenerar el cargador automatico y
+posteriormente hacer el seed
+	composer dump-autoload --optimize //***averiguar para que sirve esto***//
+	php artisan db:seed 
+
+
+
+Para arreglar puntualmente una tabla
+	php artisan migrate:fresh -v
+	php artisan db:seed --class=Perfiles
+
+
+
+
+Todo lo anterior
+	php artisan make:model --all --resource User
+
+/*--------------------------------- @return ---------------------------------
+Si se llama desde una función, la instrucción return() finaliza inmediatamente
+la ejecución de la función actual y devuelve su argumento como el valor de la
+llamada a la función. return() también finalizará la ejecución de una declaración
+eval () o archivo de script.
+Si se llama desde el ámbito global, la ejecución del archivo de script actual
+finaliza. Si el archivo de script actual es include()ed o require()ed, el control
+se devuelve al archivo de llamada. Además, si el archivo de script actual fue
+include()ed, entonces el valor dado a return() se devolverá como el valor de la
+llamada include(). Si se llama a return() desde el archivo de script principal,
+la ejecución del script finaliza. Si el archivo de script actual fue nombrado
+por las opciones de configuración auto_prepend_file o auto_append_file en php.ini,
+entonces la ejecución de ese archivo de script finaliza.
+
+@return [descripción de tipo] Esta etiqueta no debe usarse para constructores 
+o métodos definidos con un tipo de retorno nulo.
+
+Descripción de @return datatype
+Descripción de @return datatype1 | datatype2
+
+La etiqueta @return se usa para documentar el valor de retorno de funciones 
+o métodos. @returns es un alias para @return para admitir formatos de etiquetas de
+otros documentadores automáticos
+El tipo de datos debe ser un tipo PHP válido (int, string, bool, etc.), un nombre
+de clase para el tipo de objeto devuelto, o simplemente "mixto". Si desea mostrar
+explícitamente varios tipos de retorno posibles, enumere los delimitados por tuberías
+sin espacios (por ejemplo, "@return int | string"). Si se usa un nombre de clase
+como tipo de datos en la etiqueta @return, phpDocumentor creará automáticamente un
+enlace a la documentación de esa clase. Además, si una función devuelve múltiples
+valores posibles, separelos con | carácter, y phpDocumento analizará cualquier
+nombre de clase en el valor de retorno. phpDocumento mostrará la descripción
+opcional sin modificar. 
+*/
+
+
+Tipos de columna permitidos
+
+El constructor de esquema contiene una variedad de tipos de columna que puedes
+especificar al momento de construir tus tablas:
+
+[Comando];
+		Descripción.
+
+
+$table->bigIncrements('id');
+		Tipo de columna equivalente a Auto-incremento UNSIGNED BIGINT (clave primaria).
+
+$table->bigInteger('votes');
+		Tipo de columna equivalente a BIGINT equivalent.
+
+$table->binary('data');
+		Tipo de columna equivalente a BLOB.
+
+$table->boolean('confirmed');
+		Tipo de columna equivalente a BOOLEAN.
+
+$table->char('name', 100);
+		Tipo de columna equivalente a CHAR con una longitud opcional.
+
+$table->date('created_at');
+		Tipo de columna equivalente a DATE.
+
+$table->dateTime('created_at');
+		Tipo de columna equivalente a DATETIME.
+
+$table->dateTimeTz('created_at');
+		Tipo de columna equivalente a DATETIME (con hora de la zona).
+
+$table->decimal('amount', 8, 2);
+		Tipo de columna equivalente a DECIMAL con una precisión (el total de dígitos) y
+		escala de dígitos decimales.
+
+$table->double('amount', 8, 2);
+		Tipo de columna equivalente a DOUBLE con una precisión (el total de dígitos) y 
+		escala de dígitos decimales.
+
+$table->enum('level', ['easy', 'hard']);
+		Tipo de columna equivalente a ENUM.
+
+$table->float('amount', 8, 2);
+		Tipo de columna equivalente a FLOAT con una precisión (el total de dígitos) y 
+		escala de dígitos decimales.
+
+$table->geometry('positions');
+		Tipo de columna equivalente a GEOMETRY.
+
+$table->geometryCollection('positions');
+		Tipo de columna equivalente a GEOMETRYCOLLECTION.
+
+$table->increments('id');
+		Tipo de columna equivalente a Auto-incremento UNSIGNED INTEGER (clave primaria).
+
+$table->integer('votes');
+		Tipo de columna equivalente a INTEGER.
+
+$table->ipAddress('visitor');
+		Tipo de columna equivalente a dirección IP.
+
+$table->json('options');
+		Tipo de columna equivalente a JSON.
+
+$table->jsonb('options');
+		Tipo de columna equivalente a JSONB.
+
+$table->lineString('positions');
+		Tipo de columna equivalente a LINESTRING.
+
+$table->longText('description');
+		Tipo de columna equivalente a LONGTEXT.
+
+$table->macAddress('device');
+		Tipo de columna equivalente a dirección MAC.
+
+$table->mediumIncrements('id');
+		Tipo de columna equivalente a Auto-incremento UNSIGNED MEDIUMINT (clave primaria).
+
+$table->mediumInteger('votes');
+		Tipo de columna equivalente a MEDIUMINT.
+
+$table->mediumText('description');
+		Tipo de columna equivalente a MEDIUMTEXT.
+
+$table->morphs('taggable');
+		Agrega los tipos de columna equivalente a UNSIGNED INTEGER taggable_id y VARCHAR
+		taggable_type.
+
+$table->multiLineString('positions');
+		Tipo de columna equivalente a MULTILINESTRING.
+
+$table->multiPoint('positions');
+		Tipo de columna equivalente a MULTIPOINT.
+
+$table->multiPolygon('positions');
+		Tipo de columna equivalente a MULTIPOLYGON.
+
+$table->nullableMorphs('taggable');
+		Permite que la columna morphs() acepte una versión de valor nulo.
+
+$table->nullableTimestamps();
+		Método Alias de timestamps().
+
+$table->point('position');
+		Tipo de columna equivalente a POINT.
+
+$table->polygon('positions');
+		Tipo de columna equivalente a POLYGON.
+
+$table->rememberToken();
+		Permite nulos en el tipo de columna equivalente a VARCHAR(100) remember_token.
+
+$table->set('flavors', ['strawberry', 'vanilla']);
+		Establece una columna equivalente.
+
+$table->smallIncrements('id');
+		Tipo de columna equivalente a Auto-incremento UNSIGNED SMALLINT (clave primaria).
+
+$table->smallInteger('votes');
+		Tipo de columna equivalente a SMALLINT.
+
+$table->softDeletes();
+		Permite nulos en el tipo de columna equivalente a TIMESTAMP deleted_at para 
+		eliminaciones.
+
+$table->softDeletesTz();
+		Permite nulos en el tipo de columna equivalente a TIMESTAMP deleted_at (con la 
+		hora de la zona) para eliminaciones.
+
+$table->string('name', 100);
+		Tipo de columna equivalente a VARCHAR con una longitud opcional.
+
+$table->text('description');
+		Tipo de columna equivalente a TEXT.
+
+$table->time('sunrise');
+		Tipo de columna equivalente a TIME.
+
+$table->timeTz('sunrise');
+		Tipo de columna equivalente a TIME (con la hora de la zona).
+
+$table->timestamp('added_on');
+		Tipo de columna equivalente a TIMESTAMP.
+
+$table->timestampTz('added_on');
+		Tipo de columna equivalente a TIMESTAMP (con la hora de la zona).
+
+$table->timestamps();
+		Permite nulos en las columnas equivalentes TIMESTAMP created_at y updated_at.
+
+$table->timestampsTz();
+		Permite nulos en las columnas equivalentes TIMESTAMP created_at y updated_at 
+		(con la hora de la zona).
+
+$table->tinyIncrements('id');
+		Tipo de columna equivalente a Auto-incremento UNSIGNED TINYINT (clave primaria).
+
+$table->tinyInteger('votes');
+		Tipo de columna equivalente a TINYINT.
+
+$table->unsignedBigInteger('votes');
+		Tipo de columna equivalente a UNSIGNED BIGINT.
+
+$table->unsignedDecimal('amount', 8, 2);
+		Tipo de columna equivalente a UNSIGNED DECIMAL con una precisión (total de 
+		dígitos) escala (dígitos decimales).
+
+$table->unsignedInteger('votes');
+		Tipo de columna equivalente a UNSIGNED INTEGER.
+
+$table->unsignedMediumInteger('votes');
+		Tipo de columna equivalente a UNSIGNED MEDIUMINT.
+
+$table->unsignedSmallInteger('votes');
+		Tipo de columna equivalente a UNSIGNED SMALLINT.
+
+$table->unsignedTinyInteger('votes');
+		Tipo de columna equivalente a UNSIGNED TINYINT.
+
+$table->uuid('id');
+		Tipo de columna equivalente a UUID.
+
+$table->year('birth_year');
+		Tipo de columna equivalente a YEAR.
+
+
+
+
+
+Modificadores de columna
+
+Además de los tipos de columna listados anteriormente, hay varios "modificadores" de columna 
+que puedes usar al momento de agregar una columna a la tabla de base de datos. Por ejemplo, 
+para hacer que la columna "acepte valores nulos", puedes usar el método nullable.
+
+Schema::table('users', function (Blueprint $table) {
+    $table->string('email')->nullable();
+});
+
+Debajo está una lista con todos los modificadores de columna disponibles. Esta lista no incluye
+los modificadores de índice:
+
+[Modificador]
+		Descripción
+
+->after('column')
+		Coloca la columna "después de" otra columna (MySQL)
+
+->autoIncrement()
+		Establece las columnas tipo INTEGER como auto-incremento (clave primaria)
+
+->charset('utf8')
+		Especifica un conjunto de caracteres para la columna (MySQL)
+
+->collation('utf8_unicode_ci')
+		Especifica un ordenamiento para la columna (MySQL/SQL Server)
+
+->comment('my comment')
+		Agrega un comentario a una columna (MySQL/PostgreSQL)
+
+->default($value)
+		Especifica un valor "predeterminado" para la columna
+
+->first()
+		Coloca la columna al "principio" en la tabla (MySQL)
+
+->nullable($value = true)
+		Permite que valores NULL (por defecto) sean insertados dentro de la columna
+
+->storedAs($expression)
+		Crea una columna almacenada generada por la expresión (MySQL)
+
+->unsigned()
+		Establece las columnas tipo INTEGER como UNSIGNED (MySQL)
+
+->useCurrent()
+		Establece las columnas tipo TIMESTAMP para usar CURRENT_TIMESTAMP como 
+		valor predeterminado
+
+->virtualAs($expression)
+		Crea una columna virtual generada por la expresión (MySQL)
+
+->generatedAs($expression)
+		Crea una columna de identidad con opciones de secuencia especificadas (PostgreSQL)
+
+->always()
+		Define la prioridad de los valores de secuencia sobre la entrada para una 
+		columna de identidad (PostgreSQL)
+
+#
+Modificando columnas
